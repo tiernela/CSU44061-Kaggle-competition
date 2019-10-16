@@ -101,56 +101,33 @@ income_test.drop(['train'], axis=1, inplace=True)
 income_test.drop(['test'], axis=1, inplace=True)
 
 
-## Multilinear regression
-#
-# 
-#X = income_train.loc[:, income_train.columns !='Income in EUR']
-#Y = income_train.loc[:, 'Income in EUR']
-##xTrain, xTest, yTrain, yTest = train_test_split(X, Y, test_size = 0.2, random_state = 0)
-#
-#
-#regress = linear_model.LinearRegression()
-#regress.fit(X,Y)
-#coeff = regress.coef_
-#print('Intercept: \n', regress.intercept_)
-#print('Coefficients: \n', regress.coef_)
-#
-### predictions
-#income_test['Income'] =  regress.predict(income_test.loc[:, income_test.columns != 'Income'])
-#
-#Results = income_test[['Income']].copy()
-#Results.to_csv(r'C:\Users\Me\Documents\College\Maths 4th Year\Machine Learning\Results.csv')
-
-
 
 ## Multilinear regression 
-#X = income_train.loc[:, income_train.columns !='Income in EUR']
-#Y = income_train.loc[:, 'Income in EUR']
-#
-#regress = linear_model.LinearRegression()
-#regress.fit(X,Y)
-#print('Intercept: \n', regress.intercept_)
-#print('Coefficients: \n', regress.coef_)
-#
-### predictions
-#income_test['Income'] =  regress.predict(income_test.loc[:, income_test.columns != 'Income'])
-#
-#Results = income_test[[ 'Income']].copy()
-#Results.to_csv(r'C:\Users\Me\Documents\College\Maths 4th Year\Machine Learning\Results.csv')
+X = income_train.loc[:, income_train.columns !='Income in EUR']
+Y = income_train.loc[:, 'Income in EUR']
+
+regress = linear_model.LinearRegression()
+regress.fit(X,Y)
+
+## predictions
+income_test['Income'] =  regress.predict(income_test.loc[:, income_test.columns != 'Income'])
+
+Results = income_test[[ 'Income']].copy()
+Results.to_csv(r'C:\Users\Me\Documents\College\Maths 4th Year\Machine Learning\Results.csv')
 
 
 
 ## Multilinear regressionon train set divide
-X = income_train.loc[:, income_train.columns !='Income in EUR']
-Y = income_train.loc[:, 'Income in EUR']
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=1)
+# X = income_train.loc[:, income_train.columns !='Income in EUR']
+# Y = income_train.loc[:, 'Income in EUR']
+# X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=1)
 
 
-regress = linear_model.LinearRegression()
-regress.fit(X_train, Y_train)
-Y_pred = regress.predict(X_test)
+# regress = linear_model.LinearRegression()
+# regress.fit(X_train, Y_train)
+# Y_pred = regress.predict(X_test)
 
-print(np.sqrt(metrics.mean_squared_error(Y_test, Y_pred)))
+# print(np.sqrt(metrics.mean_squared_error(Y_test, Y_pred)))
 
 
 
